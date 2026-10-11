@@ -17,16 +17,12 @@ h1 {
 nav {
     text-align: center;
     background: #deb887;
-    width: fit-content;
-    max-width: 100%;
+    width: 50%;
     margin-left: auto;
     border-radius: 10px 10px 0 0;
 }
 
 nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -88,104 +84,4 @@ footer {
 
 footer p {
     margin: 0;
-}
-
-body:not(:has(#contact:target)) nav a[href="#home"],
-body:has(#contact:target) nav a[href="#contact"] {
-    background: #7fffd4;
-    color: #800000;
-    border-radius: 10px;
-}
-
-.contact {
-    display: flex;
-    justify-content: space-between;
-    gap: 5%;
-}
-
-.contact > p {
-    width: 45%;
-    line-height: 1.4;
-    text-align: justify;
-}
-
-form {
-    width: 50%;
-    height: 840px;
-    overflow: hidden;
-    background: #5f9ea0;
-    border-radius: 8px;
-}
-
-form > div {
-    padding: 24px;
-}
-
-form p {
-    margin-bottom: 24px;
-}
-
-form label {
-    display: block;
-    margin-bottom: 8px;
-    color: white;
-    font-size: 22px;
-    line-height: 28px;
-}
-
-form input {
-    box-sizing: border-box;
-    width: 100%;
-    height: 48px;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background: white;
-    color: gray;
-    font-family: Arial, sans-serif;
-    font-size: 22px;
-}
-
-form input::placeholder {
-    color: gray;
-    opacity: 1;
-}
-
-form input:focus {
-    background: yellow;
-    color: black;
-}
-
-form input:focus::placeholder {
-    color: black;
-}
-
-form p:nth-last-child(2), form p:last-child {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-form p:nth-last-child(2) {
-    margin-bottom: 48px;
-}
-
-form input[type="color"],
-form input[type="submit"],
-form input[type="reset"] {
-    width: 45%;
-    cursor: pointer;
-}
-
-form input[type="submit"]:hover,
-form input[type="reset"]:hover {
-    color: red;
-}
-
-@media (max-width: 700px) {
-    nav { width: 100%; }
-    nav a { padding: 12px; }
-    .contact { flex-direction: column; gap: 24px; }
-    .contact > p, form { width: 100%; }
-    form label, form input { font-size: 18px; }
 }
