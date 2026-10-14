@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CalaTour - Your travel agency</title>
     <link rel="stylesheet" href="style.css">
+    <!-- LAB 3: singurul script al paginii; defer asteapta construirea DOM-ului. -->
+    <script src="validation.js" defer></script>
 </head>
 <body>
 <h1>CalaTour - <em>your travel agency</em></h1>
@@ -30,10 +32,13 @@
 <div id="contact">
 <h2>Contact</h2>
 <div class="contact">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit odio, varius vel est vel, tincidunt malesuada ex. Phasellus vulputate quam placerat, mollis sapien in, laoreet mi. Aliquam venenatis dui vitae quam feugiat accumsan. Aenean in aliquet libero. Mauris odio dui, placerat a efficitur et, pulvinar at quam. Phasellus auctor odio dui, ac tincidunt ipsum ornare vitae. Mauris quis sapien scelerisque, consectetur diam ac, consequat augue. Cras hendrerit lectus non urna volutpat pulvinar. Etiam a pretium nulla, ac condimentum dolor. Curabitur commodo accumsan lobortis. Duis sed justo eget mi dignissim volutpat. Donec imperdiet, odio et vulputate efficitur, purus neque malesuada massa, rutrum elementum turpis dui vel enim. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit odio, varius vel est vel, tincidunt malesuada ex. Phasellus vulputate quam placerat, mollis sapien in, laoreet mi. Aliquam venenatis dui vitae quam feugiat accumsan. Aenean in aliquet libero. Mauris odio dui, placerat a efficitur et, pulvinar at quam. Phasellus auctor odio dui, ac tincidunt ipsum ornare vitae. Mauris quis sapien scelerisque, consectetur diam ac, consequat augue. Cras hendrerit lectus non urna volutpat pulvinar. Etiam a pretium nulla, ac condimentum dolor. Curabitur commodo accumsan lobortis. Duis sed justo eget mi dignissim volutpat. Donec imperdiet, odio et vulputate efficitur, purus neque malesuada massa, rutrum elementum turpis dui vel enim. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
 
-    <form action="lab1.html#contact" method="get">
+    <!-- LAB 3: novalidate permite afisarea mesajelor proprii pentru toate erorile. -->
+    <form id="contact-form" action="lab1.html#contact" method="get" novalidate>
         <div>
+            <!-- LAB 3: mesaj populat din JavaScript, ascuns initial si dupa Reset. -->
+            <p id="form-message" role="status" aria-live="polite" hidden></p>
             <p>
                 <label for="surname">Surname</label>
                 <input type="text" id="surname" name="surname" placeholder="Stefanut">
@@ -48,11 +53,12 @@
             </p>
             <p>
                 <label for="birth-date">Birth date</label>
-                <input type="date" id="birth-date" name="birth-date">
+                <!-- LAB 3: text pentru introducerea datei in formatul cerut dd/mm/yyyy. -->
+                <input type="text" id="birth-date" name="birth-date" placeholder="dd/mm/yyyy">
             </p>
             <p>
                 <label for="phone">Phone number</label>
-                <input type="tel" id="phone" name="phone">
+                <input type="tel" id="phone" name="phone" placeholder="123-123456789">
             </p>
             <p>
                 <label for="email">Email</label>

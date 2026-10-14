@@ -111,8 +111,8 @@ body:has(#contact:target) nav a[href="#contact"] {
 
 form {
     width: 50%;
-    height: 840px;
-    overflow: hidden;
+    /* LAB 3: formularul se extinde pentru a incapea si mesajele de validare. */
+    min-height: 840px;
     background: #5f9ea0;
     border-radius: 8px;
 }
@@ -158,6 +158,25 @@ form input:focus {
 
 form input:focus::placeholder {
     color: black;
+}
+
+/* LAB 3: campurile invalide raman portocalii inclusiv cand primesc focus. */
+form input.invalid {
+    background: orange;
+    color: black;
+}
+
+/* LAB 3: mesajul de la inceputul formularului, pentru erori sau confirmare. */
+#form-message {
+    padding: 12px;
+    background: white;
+    color: #800000;
+    line-height: 1.5;
+    border-radius: 6px;
+}
+
+#form-message.success {
+    color: #166534;
 }
 
 form p:nth-last-child(2), form p:last-child {
