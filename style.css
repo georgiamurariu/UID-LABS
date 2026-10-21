@@ -161,7 +161,7 @@ form input:focus::placeholder {
 }
 
 /* LAB 3: campurile invalide raman portocalii inclusiv cand primesc focus. */
-form input.invalid {
+form input.invalid_input_color {
     background: orange;
     color: black;
 }
