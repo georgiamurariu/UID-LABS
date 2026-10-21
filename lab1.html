@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CalaTour - Your travel agency</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="chat.css">
 
     <script src="validation.js" defer></script>
+    <script src="chat.js" defer></script>
 </head>
 <body>
 <h1>CalaTour - <em>your travel agency</em></h1>
@@ -31,6 +34,29 @@
 
 <div id="contact">
 <h2>Contact</h2>
+<!-- LAB 4: componenta este fixa, in afara fluxului paginii. -->
+<aside id="chat" aria-label="Contact chat">
+    <button id="chat-toggle" type="button" aria-label="Open chat" aria-expanded="false" aria-controls="chat-panel">
+        <i class="fa fa-comments" aria-hidden="true"></i>
+        <span class="chat-title">Chat with us !</span>
+        <i class="fa fa-times chat-close" aria-hidden="true"></i>
+    </button>
+    <div id="chat-panel" hidden inert>
+        <form id="chat-form" novalidate>
+            <!-- Acelasi element afiseaza mesajul initial si ambele rezultate. -->
+            <p id="chat-message" role="status" aria-live="polite">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+                <span>Authentication required</span>
+            </p>
+            <input id="chat-username" name="username" type="text" placeholder="username" aria-label="Username" autocomplete="username">
+            <input id="chat-password" name="password" type="password" placeholder="password" aria-label="Password" autocomplete="current-password">
+            <input id="chat-authenticate" type="submit" value="Authenticate">
+        </form>
+        <p id="chat-processing" role="status" hidden>
+            <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...
+        </p>
+    </div>
+</aside>
 <div class="contact">
     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit odio, varius vel est vel, tincidunt malesuada ex. Phasellus vulputate quam placerat, mollis sapien in, laoreet mi. Aliquam venenatis dui vitae quam feugiat accumsan. Aenean in aliquet libero. Mauris odio dui, placerat a efficitur et, pulvinar at quam. Phasellus auctor odio dui, ac tincidunt ipsum ornare vitae. Mauris quis sapien scelerisque, consectetur diam ac, consequat augue. Cras hendrerit lectus non urna volutpat pulvinar. Etiam a pretium nulla, ac condimentum dolor. Curabitur commodo accumsan lobortis. Duis sed justo eget mi dignissim volutpat. Donec imperdiet, odio et vulputate efficitur, purus neque malesuada massa, rutrum elementum turpis dui vel enim. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
 
