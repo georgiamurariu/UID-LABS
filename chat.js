@@ -1,73 +1,45 @@
-// LAB 4: listener separat, fara a suprascrie window.onload din validation.js.
-document.addEventListener("DOMContentLoaded", () => {
-    const chat = document.getElementById("chat");
-    const toggle = document.getElementById("chat-toggle");
-    const panel = document.getElementById("chat-panel");
-    const authForm = document.getElementById("chat-form");
-    const username = document.getElementById("chat-username");
-    const password = document.getElementById("chat-password");
-    const result = document.getElementById("chat-message");
-    const processing = document.getElementById("chat-processing");
-    let pending = false;
-    let authenticated = false;
+$(document).ready(function () {
+    // Deschidem chatul: intai latimea, apoi inaltimea.
+    $("#chat-toggle").on("click", function () {
+        if ($("#chat").is(":animated")) return;
 
-    function closeChat() {
-        chat.classList.remove("is-open", "is-opening");
-        panel.hidden = true;
-        panel.inert = true;
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.setAttribute("aria-label", "Open chat");
-        toggle.focus();
-    }
-
-    toggle.addEventListener("click", () => {
-        if (chat.classList.contains("is-open")) {
-            closeChat();
-            return;
+        if ($("#chat").hasClass("is-open")) {
+            $("#chat").removeClass("is-open").css({ width: 40, height: 40 });
+            $("#chat-panel").hide();
+            $(this).attr("aria-expanded", "false").attr("aria-label", "Open chat");
+        } else {
+            $("#chat").addClass("is-open")
+                .animate({ width: 300 }, 500)
+                .animate({ height: 300 }, 500, function () {
+                    $("#chat-panel").show();
+                });
+            $(this).attr("aria-expanded", "true").attr("aria-label", "Close chat");
         }
-
-        panel.hidden = false;
-        chat.classList.add("is-open", "is-opening");
-        toggle.setAttribute("aria-expanded", "true");
-        toggle.setAttribute("aria-label", "Close chat");
     });
 
-    chat.addEventListener("animationend", (event) => {
-        if (event.animationName !== "chat-open") return;
-        chat.classList.remove("is-opening");
-        panel.inert = false;
-        if (!pending && !authenticated) username.focus();
-    });
+    $("#chat-form").on("submit", function (event) {
+        event.preventDefault(); // Nu reincarcam pagina.
+        if ($("#chat-authenticate").prop("disabled")) return;
 
-    chat.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeChat();
-    });
+        const valid = $("#chat-username").val() === "admin" &&
+            $("#chat-password").val() === "admin1234";
 
-    authForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        if (pending || authenticated) return;
+        $("#chat-form input").prop("disabled", true);
+        $("#chat-processing").show();
 
-        const accepted = username.value === "admin" && password.value === "admin1234";
-        pending = true;
-        for (const input of authForm.elements) input.disabled = true;
-        authForm.setAttribute("aria-busy", "true");
-        processing.hidden = false;
-
-        // Simulare locala: rezultatul apare numai dupa cele 3 secunde.
-        window.setTimeout(() => {
-            pending = false;
-            authenticated = accepted;
-            processing.hidden = true;
-            authForm.setAttribute("aria-busy", "false");
-            result.classList.toggle("error", !accepted);
-            result.querySelector("i").className = accepted
-                ? "fa fa-check" : "fa fa-exclamation-triangle";
-            result.querySelector("span").textContent = accepted
-                ? "Authentication successful !" : "Invalid username or password";
-
-            // Ca in exemplul video, dupa succes campurile raman dezactivate.
-            for (const input of authForm.elements) input.disabled = accepted;
-            if (!accepted && chat.classList.contains("is-open") && !panel.inert) password.focus();
+        // Simulam verificarea datelor timp de 3 secunde.
+        setTimeout(function () {
+            $("#chat-processing").hide();
+            if (valid) {
+                $("#chat-message").removeClass("error");
+                $("#chat-message i").attr("class", "fa fa-check");
+                $("#chat-message span").text("Authentication successful !");
+            } else {
+                $("#chat-message").addClass("error");
+                $("#chat-message i").attr("class", "fa fa-exclamation-triangle");
+                $("#chat-message span").text("Invalid username or password");
+                $("#chat-form input").prop("disabled", false);
+            }
         }, 3000);
     });
 });
