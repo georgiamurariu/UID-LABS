@@ -1,0 +1,82 @@
+/* LAB 5: suprascriem regulile vechi fara sa modificam fisierele CSS. */
+#chat-conversation {
+    display: none;
+    color: white;
+    font-size: 13px;
+}
+
+#chat-panel {
+    padding: 12px;
+}
+
+#chat-session {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+#chat-messages {
+    box-sizing: border-box;
+    height: 130px;
+    padding: 8px;
+    overflow-y: auto;
+    background: white;
+    color: #333;
+    border-radius: 4px;
+}
+
+#chat-messages .chat-entry {
+    margin-bottom: 8px;
+    overflow-wrap: anywhere;
+}
+
+#chat-messages .chat-own {
+    color: #800000;
+}
+
+#chat-messages small {
+    margin-left: 6px;
+    color: #666;
+}
+
+#chat-status {
+    min-height: 16px;
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+#chat-send-form {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+#chat-text {
+    flex: 1;
+    min-width: 0;
+    height: 30px;
+    font-size: 13px;
+    color: #333;
+}
+
+#chat-text:focus {
+    background: white;
+    outline: 2px solid #deb887;
+}
+
+#chat-conversation button {
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#chat-conversation button:disabled {
+    cursor: default;
+    opacity: 0.6;
+}
