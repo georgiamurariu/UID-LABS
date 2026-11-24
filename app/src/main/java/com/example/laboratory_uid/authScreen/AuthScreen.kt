@@ -2,7 +2,6 @@ package com.example.laboratory_uid.authScreen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -22,7 +21,8 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun AuthScreen(
     viewModel: AuthViewModel,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onSignedIn: () -> Unit = {}
 ) {
 
     Column(
@@ -79,6 +79,8 @@ fun AuthScreen(
         Button(
             onClick = {
                 viewModel.signIn()
+                // Lab 7: navigăm numai dacă validarea existentă confirmă autentificarea.
+                if (viewModel.isAuthenticated) onSignedIn()
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -108,20 +110,3 @@ fun AuthScreen(
 private fun AuthScreenPreview() {
     //AuthScreen()
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
